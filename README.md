@@ -2,7 +2,7 @@
 
 AONewbie is a transparent, always-on-top overlay that sits on top of Anarchy Online. It gives you a
 fast item search, a nano list browser, a character config, a guide browser, boss/event countdown
-timers, a real-time damage meter, live inventory/bank tracking, trade-list posting and many more - all without
+timers, a real-time damage meter, live inventory/bank tracking, trade-list posting, scrolling combat text/icon ready cooldowns and many more - all without
 alt-tabbing out of the game.
 
 ## The Launcher
@@ -31,6 +31,7 @@ AONewbie itself installed and up to date.
 - **Tools**: general tools like Whatbuffs / Weapon dps / Trickle / Macros.
 - **Timers**: track boss/event countdowns.
 - **Pocket bosses/boss locations & drops**: searching for a symbiant gives you details about PB drop location and loot.
+- **Scrolling combat text / Icon ready cooldown / Duration tracker**: improves the UI with combat info.
 - **Damage meter**: reads your AO client's own chat log in real time - no memory reading, no
   injection. Make sure combat messages are enabled in your AO chat settings.
 - **Trade lists**: build a WTS/WTB list from your own items and post it to chat in one click. Also live notifications when something from your lists is posted  by a player.
