@@ -18,6 +18,8 @@ AONewbie itself installed and up to date.
   automatically before starting - no need to reinstall by hand.
 - The gear icon (top-right) shows where AONewbie is installed and which version you have.
 
+https://github.com/boblea-ao/AONewbie/releases/download/launcher-latest/AONewbieLauncher-1.8.2.exe
+
 ## Using the overlay in-game
 
 - **Anchor bar**: hover your mouse near the top of the screen to reveal the menu bar. Click an
