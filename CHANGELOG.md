@@ -1,3 +1,25 @@
+## 1.3.0
+- Shift+Shift search history: Prev/Next through the last 25 searches
+- Perk action level data: Evasive Stance and 35 more actions now carry every level
+- Show perk actions' real icons in /p search results
+- Give Evasive Stance its ten levels of All Defense and duration
+- Fix LazyInitializationException opening nanos that name another nano in a requirement
+- Quality slider for WhatBuffs weapons/armor, Setups equip rows and Weapon DPS
+- Assert the launch-created AONewbie window is hidden and logged
+- Create the AONewbie chat window hidden and automatically at launch
+- Place inventory items from the game's own Inventory.xml layout
+- Restore the old window format and swap the trade channel in the AONewbie window on switch
+- Window setup (work in progress): create-only, no frame, created closed
+- Nano List: gray row highlight instead of the red line for FP Agent/Froob
+- Clean symbiant duplicates out of the shipped database and on interrupted rebuilds
+- Nano List scratches instead of hiding; search matches groups and bag names
+- Add shared input controls and use them in WhatBuffs
+- Parse the colour-tagged Tarasque System announcements
+
+## 1.2.1
+- Create or recreate the AONewbie chat window; drop legacy window support
+- Tell players from single-word mobs by evidence, not by spelling
+
 ## 1.2.0
 - Tail the chat log faster and prune it at launch
 - Never attribute a Damage Done row to whoever attacked the tracked player
