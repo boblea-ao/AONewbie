@@ -1,3 +1,11 @@
+## 1.3.1
+- Add timer interaction open sound
+- Added more pet levels
+- Improved sounds
+- Combat UI checkbox hides everything now
+- Fix guide interaction having two prev next sets of buttons
+- Added pet level info for engineer, crat & mp
+  
 ## 1.3.0
 - Shift+Shift search history: Prev/Next through the last 25 searches
 - Perk action level data: Evasive Stance and 35 more actions now carry every level
