@@ -1,8 +1,8 @@
 # AONewbie - Quick Start
 
-AONewbie is a transparent, always-on-top overlay that sits on top of Anarchy Online. It gives you a
-fast item search, a nano list browser, a character config, a guide browser, boss/event countdown
-timers, a real-time damage meter, live inventory/bank tracking, trade-list posting, scrolling combat text/icon ready cooldowns and many more - all without
+AONewbie is a transparent, always-on-top overlay for Anarchy Online. It gives you a
+fast item search, nano list browser, character config, guide browser, boss/event countdown
+timers, damage meter, inventory/bank tracking, trade-list posting, scrolling combat text/icon ready cooldowns and many more - all without
 alt-tabbing out of the game.
 
 ## The Launcher
