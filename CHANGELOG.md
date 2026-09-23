@@ -1,3 +1,26 @@
+
+## 1.4.0
+- Add What's New, a setup prompt, and a shared look for About and Settings
+- Improved the player detection and log parser
+- Lay out bag contents like the in-game bag window
+- Learn player professions from /list and move damage meter data to its own folder
+- Never let a failing shutdown step escape Application.stop()
+- Draw animated HUD elements in their own small windows
+- Cut overlay redraws: 4Hz duration bars, 30 fps cap, stop idle loops
+- Show misses, evades, shields and drain perks in scrolling combat text
+- Split the combat log feed from the damage meter
+- Parse shields hitting you as damage taken and drains as heals
+- Widen the anchor bar's hover area to 200px
+- Compact, sorted trade scripts and QL-aware matching of them
+- Filter script-item records out at import
+- Move blocking work to virtual threads and trade writes off the FX thread
+- Move all trade data into a gitignored trade/ folder with targeted writes
+- Link inventory bags into the trade lists and keep them live-synced
+- Chain trade scripts past AO's 4096-byte limit and rework the trade tabs
+- Fix the position of the inventory in regards to the bags in inventory
+- Move bag sell/buy glyphs above each opened bag box
+- Added sell/buy feature in inventory/bank for bulk trading
+
 ## 1.3.1
 - Add timer interaction open sound
 - Added more pet levels
@@ -53,7 +76,7 @@
 - Load Inventory/Setups/Settings data in the background
 
 ## 1.0.0
-= Let's gooooo!
+- Let's gooooo!
 
 ## Launcher 1.8.2
 - Fix wrong uninstall property: MSIFASTINSTALL never disabled rollback
