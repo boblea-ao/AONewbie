@@ -14,7 +14,7 @@ AONewbie itself installed and up to date.
 - **Update available** - a newer version is out; click the button to download and apply it.
 - **Launch** - AONewbie is up to date; click to start the game overlay (the Launcher window
 - **Troubleshoot** - If the launcher can't reach github run from cmd the following command: curl -v -L https://github.com/boblea-ao/AONewbie/releases/latest/download/manifest.json
-- **Download link** - https://github.com/boblea-ao/AONewbie/releases/download/launcher-latest/AONewbieLauncher-1.8.2.exe
+- **Download link** - https://github.com/boblea-ao/AONewbie/releases/download/launcher-latest/AONewbieLauncher-1.8.4.exe
 
   <img width="1104" height="504" alt="launcher" src="https://github.com/user-attachments/assets/b9f26f8a-f8b9-49c8-89e5-35139f1a0641" />
 
