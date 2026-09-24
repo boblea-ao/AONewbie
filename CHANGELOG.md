@@ -1,3 +1,29 @@
+## Launcher 1.8.4
+- Launcher logs its startup, progress and silently-handled failures
+
+## Launcher 1.8.3
+- Launcher trusts the JDK's root certificates as well as Windows'
+- Launcher Changelog button opens the public repo's CHANGELOG.md
+
+## 1.5.0
+- Focus follows panels, Tarasque spawn timer, scroll and taskbar fixes
+- Damage meter row details, scroll fixes, no row hover flicker
+- Mission tracker: per-mission bars, run summary, chest fix
+- Start each new guide/search page at its top
+- Combat UI: resizable HUD elements, show/hide, scroll direction
+- WhatBuffs: team buffs, NCU/Level columns, Shade tabs, sort fixes
+- Shorter trade posts: family sections and bare nano names
+- Post the same item, QL and price once with its total quantity
+- Read mission token lines with the combat log parser, not a second feed
+- Tell the token bar about changes once per log tick; tighten the thread rule
+- Release the mission token chance bar; keep Missions behind its flag
+- Show the mission token chance as a movable HUD bar
+- Track each character's mission token chance from the chat log
+- Keep live inventory updates off the capture and JavaFX threads
+- Link a bag received in a trade to its contents the first time it's opened
+- Keep the combat log feed running when an online character has no name yet
+- Add pattern finder and live inventory tracking for trades, loot, use and credits
+- Name the owner of shared ready icons when toons share a screen
 
 ## 1.4.0
 - Add What's New, a setup prompt, and a shared look for About and Settings
