@@ -1,3 +1,14 @@
+## 1.6.0
+- Quest completion between list updates, full character removal
+- Mission Log shows completed runs and rewards
+- Mission Log, quest chains, setup prompt for new toons
+- Combat UI options, more ready icons
+- Combat UI font picker with bundled and uploaded fonts
+- Added UI scaling and fixes
+- Inventory: follow the game's Auto arrange order; note on unseen bags
+- Pets: tag recolored pets, split pet damage/heals in details; fix HUD-blocked scrolling
+- Team: damage meter Team filter, capture-fed team, team health/nano bars (flagged)
+
 ## Launcher 1.8.4
 - Launcher logs its startup, progress and silently-handled failures
 
