@@ -1,3 +1,20 @@
+## 1.6.1
+- Mission Log: a quest's details list up to 3 guides naming its people and things
+- Damage meter learns professions from selecting a player; /list stays as backup
+- Mission Log opens minimized at the right edge on a finished quest or mission
+- Trade watch: a name inside another item's link is not a mention
+- Chat scripts: shared ChatScript (4096-byte chaining, delays, writing); /aodmg posts everyone and chain
+- Tarasque timer counts to when he can be attacked
+- Perk Planner: points used counted on open, trained lines first and highlighted
+- IP's panel: buttons visible again, Revert to the opening state, clearer rows
+- IP's panel: buffed value with base and max per ability and skill
+- IP's panel (was Character): Save, Revert and Reset all skills, no auto-save
+- Perk data: Defensive Stance added, 34 perks.json levels corrected
+- Perk ids: the full table, generated from the game client's own perk records
+- Import from Character brings the trained perks into the Perk Planner
+- Refined (QL 201+) implants in the Implant Designer
+- Mission runs as clearable progress, failed/deleted missions, split-family reward QL
+- 
 ## 1.6.0
 - Quest completion between list updates, full character removal
 - Mission Log shows completed runs and rewards
