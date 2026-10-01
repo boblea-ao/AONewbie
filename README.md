@@ -88,3 +88,17 @@ AONewbie itself installed and up to date.
 
 - Panels can be dragged and resized, double click the titles to minimize, esc closes most of them etc; the overlay remembers where you left them.
 - Right-click the tray icon (bottom-right of your taskbar) for About/Settings, or to fully exit the overlay.
+
+## 🍺 Support
+
+If you find this useful, you can buy me a beer:
+
+[![Buy me a beer](https://img.shields.io/badge/Buy%20me%20a%20beer-Revolut-0075EB?style=for-the-badge&logo=revolut&logoColor=white)](https://revolut.me/boblea_ao)
+
+<details>
+<summary>📱 Or scan the QR code</summary>
+<br>
+<a href="https://revolut.me/boblea_ao">
+  <img src="assets/revolut_qr.jpg" alt="Revolut QR code" width="160">
+</a>
+</details>
