@@ -1,5 +1,7 @@
 ## 1.6.2
 - Solid clumps: each low/high id pair one QL-range family, clumps named by type
+- Bank / inventory: a clump's type in cyan on its icon
+- What's New: releases oldest first
 
 ## 1.6.1
 - Mission Log: a quest's details list up to 3 guides naming its people and things
