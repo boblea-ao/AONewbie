@@ -1,3 +1,6 @@
+## 1.6.2
+- Solid clumps: each low/high id pair one QL-range family, clumps named by type
+
 ## 1.6.1
 - Mission Log: a quest's details list up to 3 guides naming its people and things
 - Damage meter learns professions from selecting a player; /list stays as backup
