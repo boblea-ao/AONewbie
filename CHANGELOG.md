@@ -1,3 +1,97 @@
+## 2.0.0
+- One reader for every data file; boss timers from the kill; default HUD layout; skin flagged
+- Inferno dyna bosses linked to their pocket bosses; the data pipeline rule
+- Boss kill timers: a killed boss offers its timer; respawns per server
+- Timers: no double fire on the due tick; a boss message starts a stopped timer
+- WhatBuffs: Spirits scale with quality; Setups: AI level capped by level
+- Buff strip: the Meta-Physicist's composites are their own group
+- City raid timer, AONewbie Link over Vicinity, one Menu sounds switch
+- Settings: scrolling text kinds, per-sound switches, Combat/Track bars, General style
+- Mission Log: alien missions list the Alien Invasion quest guides
+- Frame colours with our own picker; outline clear of icons; target icon size
+- Frames, XP bars, team and mission log batch
+- Mission Log: completed grouped by name, delete, blitz no-token fix
+- Party frames: buff icons fitted to the bars, bars never move; outline back
+- Overlay topmost guard: a real HWND_TOPMOST - its raise never worked
+- Tests: look up suggestion popups on the JavaFX thread; no endless poll
+- Buff icons as their own strip; one 1 s clock for icons; frame right clicks
+- Deleted characters from the game's list; client-read max; per-client close
+- Game commands through the hook: zone scripts, Follow; zone-in decoded
+- Party frames: a right click always opens the menu
+- Wheel over an open dropdown, suggestion list or menu scrolls it
+- Follow released: no feature flag; 1.6.2 notes on master
+- Right-click menus: one at a time, closed by a press anywhere off it
+- What's New: releases oldest first, in the order they came out
+- Bank / inventory: a clump's type in cyan on its icon
+- Solid clumps: each low/high id pair one QL-range family, clumps named by type
+- Weapon special cycles: note the GM-only A.F.D. Twohander row
+- Deleted missions no longer count as completed; alien XP per hour in a mission
+- Weapon DPS specials as the item panel's rows (SpecialSkillRow)
+- Specials from Nadybot / AO-Universe, PRKHelper dropped; missing weapon cycles from aogalaxy
+- Hook-first missions and XP, game UI kept in step, Level tags, specials box, Follow (flagged)
+- XP bar from the level table, specials calculator, aligned requirements, mission menu, quest info
+- Mission Log: type icons, right-click Upload to map / Delete; loot shown as is; hook note removed
+- Frames batch: number formats, bar heights, buff icon placement; trade channels and short posts
+- Bug batch: notifications font, cast names from capture, chat window and skin kept in step, live XP
+- HUD pass: game bars follow our switches, hover-only bars, target info from the client
+- Frames on a second screen: Lock/Move places each handle on its own screen
+- Notifications: movable HUD cards for timers, trade matches and finished missions
+- Over-Equip inline on requirement lines; special-attack caps; init calculator rounding fix
+- XP bar: text shrinks onto a thin bar; XP left to regain in blue; dataset counts refreshed
+- Over-Equip on weapon, armour and pet-nano panels; SpotBugs / Checkstyle / coverage pass
+- Frames pass: range beside the target's bar, short professions, plain party names, party buff icons
+- Game windows and range fixed from the first in-game trace; debuff hover shows its modifiers
+- HUD out of the way of the game's windows; range to the target
+- Team bars: level and profession before the name, as the target frame; leader in forest green
+- Bars: XP / SK, alien XP and PvP score bars of our own
+- Settings: on/off switches in place of Show checkboxes; Lock/Move sizing and snapping
+- Team known right after an AONewbie restart
+- Running nanos: icons for icon-less effects; no 'not found' remembered during the import
+- Hook: the game's own bars come back when AONewbie goes; team and XP trace; rebuilt binaries
+- Damage meter: trimmed frame, no padding of its own, smaller footer controls
+- Running perk effects keep their icon
+- Target timers move into the target frame; Player timers renamed
+- Mission log: keep every finished mission, load files saved before rewards
+- Remove trace logging from the app and the hook
+- Own level and profession read from the client at start
+- Capture scan: every 30 s once a client is hooked, a client closing ends the wait
+- WIP: checkpoint before restarting
+- Own stats read through the hook; character switch, tabbed-out HUD, real max health
+- Overlay: put our windows back on top when the game gets in front of them
+- Lock/Move snapping and plain placeholders; Frames renames; AONewbieGUI tag; About credits
+- Combat HUD: cast bars block, Frames settings sections, party level/profession, hide on logout
+- Combat HUD: hook-side team select, Combat settings tabs, timer start stamps, traces
+- AONewbieGUI released; hook, focus and review fixes for 1.7.0
+- AONewbieGUI: game timers, con colours, focus-free overlay, frame fixes
+- Remove /list entirely
+- Damage meter: Shadowknowledge leads the XP tab from level 200
+- Implant compare: fix the class doc's wording
+- Implant compare: the picked symbiant stays the reference when stepping
+- Inventory: replay a real equip-from-backpack through decoder and model
+- Setups: a compact share code that fits in one AO chat message
+- Fonts: remove a font you added
+- Panels: a slight cyan edge on every panel
+- AONewbieGUI: the F10 round-bars option switches game bars vs our frames
+- AONewbieGUI: right-click menus on the frames run the game's own actions
+- AONewbieGUI target frame (JavaFX)
+- AONewbieGUI party frames: the team bars restyled like the player frame
+- Player frame: touch nothing when nothing changed
+- AONewbieGUI: the player frame in JavaFX, the native frame parked
+- Revert closing the game's own Team window
+- AONewbieGUI unit frame at the reference's sizes, no resizing
+- AONewbieGUI: close the game's Team window at most once a second
+- AONewbieGUI unit frame replaces the game's own Team window
+- AONewbieGUI unit frame: names and numbers as text, sizes from F10
+- AONewbieGUI team frame: team rows, cast bars, F10 Frames page
+- AONewbieGUI: player frame, hidden game bars, frame commands in the hook
+- Nano timers: time left as 45s / mm:ss / hh:mm:ss
+- AONewbieGUI: fixes from the code review
+- AONewbieGUI: own client skin module and a native game window bridge
+- Shadow nano duplicates: clean up after every item-effect import
+- Nano timers: one NCU list per character ("Boblea NCU", "Nopet NCU")
+- Nano timers from capture, game-hook gating, and the dataset first over bundled files
+- Scrolling text: one merge rule for everything; Team view keeps members since Reset
+- 
 ## 1.6.2
 - Solid clumps: each low/high id pair one QL-range family, clumps named by type
 - Bank / inventory: a clump's type in cyan on its icon
