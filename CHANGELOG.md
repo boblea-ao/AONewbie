@@ -1,3 +1,56 @@
+## 2.1.1
+- Quick Access wheel on `; Screen detection in AO Integration; Track bars switch
+- Character Sheet: portrait width in whole pixels; tests for two clients, failed copies and the capture flow
+
+## 2.1.0
+- Character Sheet: the portrait frame takes the screenshot's shape
+- Release the Character Sheet, with the toon's portrait from character select
+- Character Sheet (flag off): the client's own stats on Alt+C; Frames section header bars
+- Searchable panels open with the cursor in their search box again
+- AONewbieGUI: the round health / nano and target health checkboxes back in F10
+- AONewbieGUI: leave the Live-only F10 sliders out of a PRK client
+- Combat bars: a new cast clears the last one's red mark
+- Combat replay: a nano stays while it's being cast
+- Game F10 options: hide only while ours replaces them, else the player's value
+- Combat replay: a nano fails only when the game says so
+- Docs: Player timers' Nanos / Effects and range, PetAdded, RangeSliderRow
+- Player timers: Nanos / Effects switches and a Duration range
+- Player timers: our pet as the game names it (PetAdded)
+- unitframe README: what each combat UI element shows and from where
+- Frames: Combat replay, Player timers, Ready icon popup, then the bars
+- Scrolling Text: a direction per kind, no lane rows, Merge hits before Colours
+- Combat settings: sections collapse from their title, kept in prefs
+- Revert "Player timers: only what we cast, our pets known by the game, 10 minutes"
+- Player timers: only what we cast, our pets known by the game, 10 minutes
+- Lock/Move placeholders follow the settings live, in the element's font
+- Nano bar: 'Recharging 4.6s' counting down while it recharges
+- Combat replay: tighter spacing, an Icons slider (1-12, 8 by default)
+- Damage meter: All and Team unchecked on a fresh install, kept as left
+- Buffs: NCU caption yellow, its used value the max field's colour
+- Nano cast bar marked red on an interrupt or a resist
+- Mission scenarios end to end: token run and Mission Log together
+- Server rules in code, one class per server; the server detected from the client
+- Mission runs: hook-first completion, no run lost; Mission Log guide fixes
+- Combat replay: nano casts, a switch per kind, perks' nano restore in blue
+- Mission log kept as the game keeps it: a quest from an NPC only adds
+- City raids one line each, right-click close; repo links; replay heals
+- Review fixes: stray text in FeatureFlags; a failed special's X at the shortest time
+- Combat replay released with options; FREE_L_KEY removed; placeholders with buff icons
+- Lock/Move placeholders at the real elements' exact size; target bar look; defaults
+- Review fixes for the target bars; flow tests; coverage gate at 90%
+- Target bars as AO: fight + selection, Recruit leader gate, one level table
+- Multibox vitals: hits counted once, own client's nano, max nano on level-up (#2)
+- Nano List: NCU a fixed 4-digit column like the nano skills
+- Small fixes: RK Shop / Load text, buffs import not logged in, XP pool divider
+- Usable fix, character skills cache, character rows off the import thread
+- Setups Buffs, shared word search for every search bar, Nano List marks
+- Whole-project review fixes: threads, leaks, import, Equip Planner, meter cost
+- Combat replay (flagged COMBAT_REPLAY, off); XP bar pool XP, zone-load retry
+- Player timers as in 1.6.1, frame buff switches, bars kept on screen; no old-prefs code
+- Perk bar names (flagged PERK_NAMES, off): decode a perk use, ask the engine its name
+- Frame text size, self-select outline, worn bags open, narrower meter, raid leader menu
+- Nano modifiers: a repeated stat is base "up to" its boosted versions, never a sum
+
 ## 2.0.0
 - One reader for every data file; boss timers from the kill; default HUD layout; skin flagged
 - Inferno dyna bosses linked to their pocket bosses; the data pipeline rule
