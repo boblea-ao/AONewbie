@@ -1,3 +1,169 @@
+## 2.2.1
+- Target frame: the name centred on the frame - a player's, a mob's, our own - the level on the left; a long name moves right of it
+- Perk bar: never names a perk that didn't run - named at its start only when one perk fits, by the game's lock as it finishes
+- Guides: the Nostalgia guides read Nostalgia, not Classic
+- Spawn decode: a player whose mark carries the high bit (20081241) is still a player - its team and full-health max are read
+- Guides: Nostalgia is its own section after the expansions, not a folder under Shadowlands
+- Profession colours: one clear hue each - the old palette had two reds, four tans and three blues
+- Perk bar: no text while the perk's name isn't known - "Perk" was confusing
+- Health bars: a player coming into range at full health has his real max at once; a guessed max isn't shown
+- Perk bar: a perk the game keeps sending waits once, a doubled timer start is one, a landing drops only what the game stopped sending
+- Ready icons: close together they sit side by side at full size, a row centred on the spot
+- Search: an item's exact copies and parts of a bigger entry shown once - 4,296 duplicates hidden
+- Inventory: no flicker when it opens - the same character loading again keeps its grids up
+- Item use: named from its low id, high id and QL - an Advanced Nano Recharger isn't "Basic" any more
+- Search: the NanoClusters of Nano Regeneration are hidden with the other implant clusters
+- Boss kills: no more timer cards or automatic restarts - the player makes a timer when they want one
+- The game's own pointer over our windows - the client's arrow and hand, not the Windows ones
+- Target frame: a mob's name on the right, as a player's - level left, name right
+- Fix: 2.2.0 quit at once when started from the Launcher - the data file is decrypted a chunk at a time
+- Bank Grid: the bank read off the JavaFX thread - before it opens and on each refresh
+- Drop lists: on PRK, a drop whose item only live has is plain text, not a link that throws
+- Mission Log: a chain's final reward named from the character's own server
+- Panels follow the client the player used - its last message out - not every message a background client got
+- Settings: a section's rows inset by its header's padding and border, their switches under the header's
+- Guides: Types is one pick like the faction's, All types first; a tree click while searching keeps the search
+- Nameplates show everyone's by default - Alt+V or Settings still change it, kept in prefs
+- Audit fixes: nameplate data told again after Off, a leftover ready icon back to full size, a double-pressed perk
+- Profession: each javadoc back on its own method
+- SpotBugs and Checkstyle clean again
+- Search: a sum shows its result as it's typed, a guide its kind, and implant clusters leave the results
+- Guides: a search over every guide, a Types dropdown and a faction pick; Nostalgia last under Shadowlands
+- Nameplates: the profession icon after the level, our own plate's health as the frames show it, sizes 100-300 x 10-30
+- New profession icons; the target frame shows a player's level in cyan and its icon, the Nano List names in their colours
+- Ready icons: a switch each for perk actions, weapon specials and items; close together they share a half-size row
+- Item use: our bars named after the item, its cooldown as a ready icon with its icon
+- Cast bars: a stim's use (game timer type 4) is the Item bar, the game's own bar hidden
+
+## 2.2.0
+- Nameplates: an on/off switch on the section - off, or the Combat UI off, gives the game its own bars back
+- Live dataset released: the live (18.8) records beside PRK's, each client's server detected (issue #6)
+- Perk bar: just the perk's name, no +N queue count
+- Data build: the duplicate report reads without flushing every row the earlier cleanups loaded
+- Live dataset: live's basic implant names (Basic Left Arm Implant) for slot art and empty imports (issue #6)
+- Live dataset, stage 4e (review fixes): sharper delta check, Nano List fallback server tested (issue #6)
+- Live dataset, stage 4e: live-vs-PRK scenarios on the real db (issue #6)
+- Live dataset, stage 4e: panel and service lookups per server, tested (issue #6)
+- Live dataset, stage 4e: import and detector coverage (issue #6)
+- Live dataset, stage 4e: combat replay, cast bars and setup tests per server (issue #6)
+- Live dataset, stage 4d' (review fixes): Perk Planner actions per server (issue #6)
+- Live dataset, stage 4d': perk-action-levels per server (issue #6)
+- Live dataset, stage 4d': nanoprofs.tsv per server (issue #6)
+- Live dataset, stage 4d': pet-levels per server (issue #6)
+- Live dataset, stage 4d (review fixes): perk actions per server, unused queries gone (issue #6)
+- Live dataset, stage 4d: WhatBuffsService per server (issue #6)
+- Live dataset, stage 4d: EquipSlotCatalog per server (issue #6)
+- Live dataset, stage 4d: ImplantClusterService per server (issue #6)
+- Live dataset, stage 4d: SymbiantService per server (issue #6)
+- Live dataset, stage 4d (part 1): catalog queries per server (issue #6)
+- Tests: suggestion picks survive a lost window focus
+- Live dataset, stage 4c (parts 2-4): panels per server (issue #6)
+- Live dataset, stage 4c (part 1): search per server (issue #6)
+- nanoprofs.txt -> nanoprofs.tsv: columns, a server column and a data-pipeline header (issue #6)
+- Live dataset, stage 4b (part 3): cooldowns, missions and loot per server (issue #6)
+- Live dataset, stage 4b (part 2): trade, guides, setups, sheet, Nano List per server (issue #6)
+- Live dataset, stage 4b (part 1): game-fed names per server (issue #6)
+- Live dataset, stage 4a: the catalog lookups answer per server (issue #6)
+- Live dataset, stage 3: the server per game client, by its data layout (issue #6)
+- Live dataset, stage 2c: the duplicate cleanups decide per server (issue #6)
+- Live dataset, stage 2b: the id-keyed additions on both servers (issue #6)
+- Live dataset, stage 2a: PRK's id-keyed curation reaches a live record only as the same item (issue #6)
+- Live dataset, stage 1: PRK + the live delta in one db, a prk/live mask per row (issue #6, flag LIVE_DATASET)
+- Cast bars: a third swing bar for a third attack (issue #7)
+- Nameplates: players' HP as AONewbie knows it, not the client's stale value
+- Cast bars: a Perk bar under the nano bar - the perk running, with its queue
+- Scrolling text pops in: 1.2x bigger at once, its size in 150 ms
+- Nameplates: a buffed mob not yet selected shows full; a corpse's range follows us
+- Nameplates: Modern drawn by AONewbie - level, brackets, red frame, combat font
+- Nameplates tab: Show, Classic or Modern, and Modern's numbers and size
+- Ready icon placeholder: Augmented Mirror Shield in place of NS over
+- Missions back behind its feature flag, off
+- Game's own bars come back when AONewbie doesn't know the character yet
+- Character Sheet: team range and mission QLs under their names, in green
+- Release Missions, the screen text line and the health bars
+- Review fixes since 2.1.1
+- Health bars: AONewbie tells each client's hook the mode and the pets in range
+- Trace T40 removed - done on PRK
+- Combat bars: Reload, Item and a nano's recharge go away when they run out
+- Guide search: each /g row tagged with its expansion and patch
+- Trace T40: who is near and where on screen, for the health bars (temporary)
+- Health bars: Alt+V cycles All, Friendly, Enemies, Off (flag HEALTH_BARS)
+- Screen text line: one short line top centre that fades (flag SCREEN_TEXT)
+- Party frames: a member who left stays gone after zoning
+- Quick Access wheel: hold ` to show it, let go over a slice to open it
+- WhatBuffs: the Implant tab's quality goes to 300, the clusters' maximum
+- Player timers: the Duration range goes down to 3 s
+- Guides: Nostalgia's 6 other guides scraped and reviewed
+- Guide pages: a link inside a callout is a link; a styled run keeps its edge spaces
+- Guides: Classic's 48 newly scraped gameplay guides reviewed
+- Guides: Classic's 43 newly scraped daily mission guides reviewed
+- Guides: Classic's 32 newly scraped location guides reviewed
+- Guides: Classic's 13 newly scraped holiday encounter guides reviewed
+- Guides: Classic's 15 newly scraped quest guides reviewed
+- Guides: Shadowlands' 18 newly scraped guides reviewed
+- Guides: Notum Wars, Lost Eden and Alien Invasion's 30 newly scraped guides reviewed
+- Inventory / bank: no QL badge on a QL 1 item without a QL range (a bag, most uniques)
+- Guide pages: a link in a paragraph wraps word by word with the sentence too
+- Guide tables: a link flows with the text around it, word by word, instead of sitting alone on its own line
+- Guide panel: pages no longer run wider than the panel
+- Guides: Classic's 26 newly scraped encounter guides reviewed
+- Guides: Classic's 51 newly scraped tradeskill guides reviewed
+- Guides: the last 20 newly scraped Shadowlands guides reviewed (Adonis, Scheol, Nascence, Pandemonium)
+- Guides: 19 newly scraped Shadowlands quest guides reviewed (Elysium, Inferno, Penumbra)
+- Guides: Shadowlands' 12 newly scraped tradeskill guides reviewed
+- Guides: 5 newly scraped guides reviewed (Lost Eden 2, Notum Wars 3)
+- Waypoints: name the ones the scraper named by coordinates or playfield
+- Guides: Dust Brigade / Peacekeeper Constad reviewed (108/112)
+- Guides: Condemned Subway reviewed (106/112)
+- Guides: The Crypt of Home reviewed (105/112)
+- Waypoints: the Shoulderpads quest's seven robots
+- Guides: Improvement Points and Implant Creation reviewed (102/112)
+- Guides: Temple of the Three Winds (raid) reviewed (97/112)
+- Guides: Temple of the Three Winds reviewed (95/112)
+- Guides: The Mantis and Smugglers Den reviewed (93/112)
+- Guides: The Mercenaries and Battle Stations reviewed (84/112)
+- Guides: Cyborg Strongholds and Cyborg Barracks reviewed (82/112)
+- Guides: Nanocrystal Creation and Clan start-up quests reviewed (80/112)
+- Guides: Living Cyber Armor and Antonio Stacklund's Upgrades reviewed (78/112)
+- Guides: 4 more Classic guides reviewed (76/112)
+- Guides: 6 more Classic guides reviewed (72/112)
+- Guides: 6 more Classic guides reviewed (66/112)
+- Guides: 16 more Classic guides reviewed (39/112)
+- Guides: first 23 Classic guides reviewed
+- Guides: Shadowlands reviewed (68/68) - The Collector, Jobe Scientists, Gauntlet, Shade guide
+- Guides: Knowledge of the Yuttos and the Adonis Xan quest reviewed (64/68)
+- Guides: Penumbra Xan Civilization Quest reviewed; its duplicate removed
+- Guides: 5 more Shadowlands guides reviewed (61/69)
+- Guides: 9 more Shadowlands guides reviewed (56/69)
+- Guides: 10 more Shadowlands guides reviewed (47/69)
+- Guides: 16 more Shadowlands guides reviewed (37/69)
+- Guides: Alien Invasion reviewed (25/25), first 21 Shadowlands guides
+- Guides: ICC Shuttleport island and quests reviewed - pages split, 39 pictures restored, 22 waypoints
+- Wine: install a symbol + emoji font into the bottle so icons aren't empty boxes
+- Guides: Arid Rift reviewed - Legacy of the Xan done (20/20)
+- Guides: an item named by one of its QLs links to its family; Spirits reviewed
+- Guides: Neretva Canyons and Xan Weapon Upgrade reviewed
+- Guides: 12 Legacy of the Xan guides reviewed; a guide link keeps its own words
+- Guides: Notum Wars reviewed (4 guides); content version 14
+- Guides: reviewed-only in releases, table blocks, labelled pending links, review tools
+- Combat replay short names, corpse countdown kept, city raid close asks first
+- Wine (Mac / Linux): LCD text off, for the smeared panel text
+- Character Sheet: a Missions section - the level's team range and mission QLs
+- Bank, Inventory: each item's QL in its cell's bottom-right corner
+- Character Sheet: the portrait holds a big toon whole
+- HudHandle: one short constructor and "with" methods
+- Tools: the superseded ScanItemEffects.java is gone
+- HUD: the Lock/Move mode in its own class
+- Panels: one WhileShown.onRemoved for what a panel hooks up while open
+- Tests: one helper for running on the JavaFX thread
+- Audit: process-id cache goes stale; unreadable mission files are kept
+- Combat log: a typed chat line is never a game event
+- SpotBugs: findings fixed in code, exposure check back on
+- Audit fixes, green build: imports, SpotBugs fixes, Checkstyle gate
+
+## Launcher 1.8.5
+- Audit fixes, green build: imports, SpotBugs fixes, Checkstyle gate
+
 ## 2.1.1
 - Quick Access wheel on `; Screen detection in AO Integration; Track bars switch
 - Character Sheet: portrait width in whole pixels; tests for two clients, failed copies and the capture flow
