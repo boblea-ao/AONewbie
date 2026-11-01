@@ -1,3 +1,144 @@
+# Changelog
+
+## 2.4.1
+- AORaid add-on 1.3.0 bundled, which the site now requires: the player's level and profession signed into a join, the add-on's version on every request, trash loot checks, a corpse rolled once, a stake left out of a roll can be disputed, /aoraid announce takes no channel
+- The add-on installs while a client from that folder is running (the loaded winmm.dll moved aside); it takes effect the next time the game starts
+- AORaid windows: a roll window per roll, up to 8 Need / Greed / Pass and a bid; the bid first with a gold edge, a BID label, a pulse and a sound; a result kept 60 s with the win chances and every roll; a leader's Bid / Roll opens the same roll window for its sealed pick; FFA on each boss-loot row; the raid pool and loot list scroll; Invite on the line it acts on; End asks to confirm; the windows drag any time without flicker and left Lock/Move
+- AORaid raid window: minimizes to its title row and comes back in place, kept on screen
+- Custom GUI: Override copies a picked character's layout onto the character in the world on the front client, after a /camp, with a backup first; Import removed
+- Damage meter: a teammate's renamed pet counts for its owner; back from minimized it stays where it is, kept on screen
+- Dungeon map: a mission left 5 minutes or more ago starts its visited rooms and time over on re-entry; chests and enemies stay
+- Track bars: a small frame on the XP, alien XP and score bars and their placeholders
+
+## 2.4.0
+- AORaid released (2026-10-30, per explicit user direction): raid points for raids - join with a code, the raid window on Alt+R / Quick Access, bids and rolls, the site https://ao.raiding.workers.dev
+- The AORaid add-on (winmm.dll) ships with AONewbie and is installed into each game folder automatically while that game is closed; another mod's winmm.dll is kept as winmm.dll.bak
+- Damage meter: entering a new mission starts that character's fights over - "All" and the XP session stay
+- Mission log: a 200+ character's mission reward is SK, not XP - the line still says "XP", so the character's level (CharacterLevels.SK_FROM) decides; the details show the SK rows (from kills, reward, total, per hour) and no XP rate beside them, the reward tag "N SK"
+- Review fixes: capture survives an unwritable live hook folder, the bridge prints paths as UTF-8, no double Assist with a legacy hook, the dungeon after the Grid is mapped on Live; cleanups
+- Hook feature status (the Assist key falls back to AONewbie when its detour fails), PvP Smart Tab never picks our team after a zone, dungeon map players by faction
+- Nameplates settings: no note about the key that switches who has a bar (per explicit user direction 2026-10-29 - the player finds it); its hotkey lookup goes with it. The note's test replaced by one that there's none and Style comes first
+- Live players known as players (2026-10-29 user report: the target menu offered only Info on Live) - a spawn's player mark is a set of bits: Live's players carry more than PRK's 00081241 (00181241, 00181249, 00181a41 - protocol trace on Live), so the exact compare missed every one. A player is now a mark with every PRK bit (37,000 spawns of both servers' traces: every player has them, no NPC, pet or vendor does; PRK's 00481241 players are now known too). Live's team id read at PRK's place (unconfirmed against a known teammate); its max health from a spawn not read - the layout after the abilities doesn't match PRK's yet
+- Dungeon map: no map in Live's Grid either (2026-10-29 user report) - Live's Grid is instanced: its zone-in says 2152822 in the header and 152 in the body (protocol trace, Live 18.8.62_EP2; PRK says 152 in both), so the layout's id never matched the Grid. A zone with 152 or 4107 in either id isn't mapped, whether the zone-in or the hook's layout arrives first
+- Nameplates with a character whose name isn't known yet: skipped like the other name lookups do - characterOn's findFirst and the Alt+V front character's toMap threw on a null name, so on Live (2026-10-29 user report) the bars were never sent and Alt+V did nothing. CLAUDE.md release step 0: remove every TEMPORARY trace before a release (per explicit user direction)
+- Release the client skin again (flag CUSTOM_SKIN removed, per explicit user direction): install / remove / sync and Settings' Custom GUI section are there by default; a sync also deletes our own old files from the installed skin - the 1.7.0 leftovers (SBNum0-9, AONewbie_PlayerFrame, AONewbie_TestBar, from git history) and anything an earlier install listed in aonewbie-files.txt - never a file the player added (2026-10-29)
+- Running game clients: each process's info read once - re-read mid-sort it can differ and the sort threw "Comparison method violates its general contract!", killing server detection and the game cursors (dev log 2026-10-28 19:21)
+- Hook already in the game: the port file also goes to that hook's own folder - 2.3.1 found no client when the game still held an earlier AONewbie's hook (2026-10-28 user report)
+
+## 2.3.1
+- Party frames after a zone: the team from the game's team window (2026-10-28, per user report)
+- City raid: lines on their character's screen, no chat post, no cloak timer on PRK (2026-10-28, per explicit user direction)
+- Leader after a zone, leader actions on the target frame, suggestion tell (2026-10-28, per explicit user direction)
+- Release Suggest invite - its flag removed (2026-10-28, per explicit user direction: will ship it)
+- Info through the game's own window; team bars, Alt+V and frame clicks per client (2026-10-28, per explicit user direction)
+- Hook reload without closing the game; a player's full menu on the target frame (2026-10-28, per explicit user direction)
+- Chat through the hook, team id after a restart, timers, map, cards (2026-10-28, per explicit user direction)
+- Notification cards per screen and character: a card about one of our characters (mission complete, invite suggested) shows on the screen showing it, one about nobody (timers, trade matches) on the primary; each screen its own Lock/Move place (2026-10-28, per explicit user direction). NotificationHudTest's "primary screen only" check now says every screen
+- Player timers: only characters in the world - a character logged out kept its timers on screen (2026-10-28 user report); the frames' own rule (GameWorldState through ScreenFocus, gone 2 s after character select), redrawn when one leaves or comes back - checked on ScreenFocus's 4 Hz poll, a hand-off only on a change
+- Damage meter Post Log -> Vicinity posts at once: the hook of the meter's character's client says each line in Vicinity (vicsay, nothing typed, the script's pause between lines); the aodmg script is still written to post again. Team stays the script - no client exports a team-chat sender (2026-10-28, per explicit user direction)
+- Nothing typed into the game (standing rule, per explicit user direction 2026-10-28): Tell opens the game's own tell window through the hook (new "tell" command - GUI.dll ChatGUIModule_c::OpenTellWindow, both clients), Suggest invite shows the card at once when the leader is ours, else the hook says it in Vicinity (vicsay - no client exports a team-chat sender). CLAUDE.md gains the rule. native/prebuilt is stale until the hook is rebuilt (clients must be closed)
+- Suggest invite, behind flag SUGGEST_INVITE: a team member who doesn't lead picks it on a player's target menu - its client says "X suggests inviting Y (level profession)" in team chat (/t, typed, per user) with the signed AONewbie Link data; the leader's AONewbie shows a card whose Invite button invites from the leader's client (team range asked first). A leader without AONewbie sees only the line. Unconfirmed: a typed /t line reaches the leader's hook with the data intact (T52) (2026-10-28, per explicit user direction)
+- Frame menus: Tell on any player (that client brought to the front, /tell <name> typed - the game opens a chat, per explicit user direction), and one order for every menu - each action has a category (character, combat, team), the categories in that order with a separator between (2026-10-28). Existing menu tests: Tell added to their expected lists, and their label lookups skip separators / null labels
+- Shared screen: a client in front at character select shows no frames on its screen - the other client's stayed over the toon, so the portrait (a screen copy at Play) and the Character Sheet showed them (2026-10-28 user report); the screen is read from the foreground window itself, the game-process check only when another window comes to the front
+- Team leader on a member's frames, Recruit for the leader only: the server names the leader to the leader's client only (trace T27, 2026-10-28) - TeamService shares it with our other characters in that team; the team invite (0x4D2A313B, now decoded) names the leader (per user, unconfirmed) and is kept once that character joins. Recruit only when solo or known to lead - a member was offered it while nobody was known to lead (T39, per explicit user direction)
+- Party frames: a member's running nanos or NCU changing no longer rebuilds the frames - the right-click menu reads them from the frames drawn; a Keeper's aura refreshing every ~5 s rebuilt every frame, drawing the profession icons a frame at zero size (the frames flickered - traced 2026-10-28, T51; no flicker after, per user)
+- Hook: its in-game half (GuiBridge, Nameplates, DungeonMap) moves from aonewbiegui/native to native/hook, beside the capture's dllmain - the whole aonewbie-hook.dll in one folder; aonewbiegui/ is the skin and the Java protocol. Moved unchanged, so the built DLL and prebuilt/ still match; build-native.bat, compileHookDll's inputs and the docs follow (2026-10-28, per explicit user direction)
+
+## 2.3.0
+- Dungeon map released - no feature flag: DUNGEON_MAP and its annotations are gone, ReleasedFeaturesTest checks it's there by default (replacing DungeonMapFeatureOffTest / OnTest), and its trace logging is removed (2026-10-27, per explicit user direction)
+- Dungeon map: the defaults are the user's own settings - 372 px (their 124% of 300), at the screen's left a little above the middle, the box 10% opaque, pets off until switched on (2026-10-27, per explicit user direction)
+- Combat UI settings: a row with no section (Other's Token chance, System message, City raid) is inset as a section header is - no bar, its switch in the header bars' column (they sat 9 px further right: the header's 8 px padding and 1 px border) (2026-10-27, per explicit user direction)
+- Combat UI, Other tab: Token chance, System message and City raid back to plain rows, no section header (reverts 7b58cb6a, 2026-10-27, per explicit user direction)
+- Party frames: assisting someone - or a Tab that changes who's assisted - adds or removes the assist mark on its frame alone; it rebuilt every frame, which drew each profession icon and assist mark a frame at zero size before the names laid out (the frames flickered, 2026-10-27 user report; Tab's own outline stopped rebuilding them 2026-10-26)
+- Combat UI, Other tab: Token chance, System message and City raid are sections as the Frames tab's - the title and the switch in the section's header bar (City raid's two switches its rows), drawn by the same code, so they line up with Frames' and the dungeon map's (2026-10-27, per explicit user direction)
+- Dungeon map (flag off), simpler: one style - the box (the Overlay gone), its size Lock/Move's (no Size slider); above the floor, fitted so nothing overlaps, "Enemies left" and the mission's time since it was first entered - counted as the mission recap counts a run's (Utils.formatRunDuration, now MissionStats' too) and kept with the mission's points; only alive mobs drawn, where they are now - no visited rooms, no remembered mobs, no switches for them. A mission's points go under ZoneEntered's instance - the hook's playfield identity is the layout's id, shared by every mission on it (trace: 80804 vs 681291516). Shadow Rifts are buffs, not chests (2026-10-27, per explicit user direction)
+- Target frame: a level past 255 shows whole - the server's selection carries the level in one byte (trace: "General - Xoch'Khaz", level 257, its byte 01, so the frame said 1), so the client's own level (stat 54, N3Msg_GetSkill) is asked and taken when it ends in the server's byte; the client's reading 257 is unconfirmed until traced (2026-10-27, user report)
+- City raid: the City Cloak Timer switch shows on Live alone - PRK has no city cloak yet, so it did nothing there (2026-10-27, per explicit user direction)
+- Settings: the hotkey groups are Anchor Buttons, Other, then Quick Access; Smart Tab's section moves from General to Other, after its single switches and before the dungeon map (2026-10-27, per explicit user direction)
+- Dungeon map (flag off): the hook's side - each playfield's layout as we enter it with every door's direction; inside a dungeon once a second, as it changes, the entrance (the playfield's own entrance register), the elevator buttons and chests within 1000 m with the playfield's instance; while the map shows, 10 times a second, us and every character within 1000 m through walls with its health (n3Playfield_t::GetVicinityDynelList, read from the game's code: type 0 keeps every dynel; the game's own vicinity asks it for 30 m and drops unseen characters); switched off when AONewbie goes. Mali's extras: rooms visited (green walls, kept with the mission), mobs remembered where last seen (dim, dead dimmer), Mali's counter "Enemies left" / nearby / seen, each with a Settings switch. Alt+M opens the map - Macros keeps no default key; no floor is drawn until the hook says which room we're in. Every client function checked in both PRK's and Live's exports; prebuilt binaries rebuilt (2026-10-27, per explicit user direction)
+- Character Sheet (Alt+C) opens on the monitor of the client whose character it shows - the screen AutoScreenAssignmentService put it on - at its saved spot moved onto that monitor; it opened on the main screen. Every other panel still opens on the primary screen (Interaction.opensOnScreenOf, 2026-10-27, per explicit user direction)
+- Item and nano titles: the right-click menu (Copy, Select All) at the panel's own text size - the title's 1.25em bold matched its labels too (2026-10-27, per explicit user direction)
+- What Buffs: the quality slider waits, greyed, until a skill and a profession are picked - it was live at 400 before anything was (2026-10-27, per explicit user direction)
+- Buffs: an hour and more of time left reads hours and minutes - "2h 32m", not "02:32:10" - on every buff icon, collapsed and expanded; under an hour as before (2026-10-27, per explicit user direction)
+- Damage meter, XP tab: at max level the Alien XP shows - from level 200 the tab waited for a first Shadowknowledge tick and hid every section until one came, and a max-level character gains none, only AIXP (user report); the Shadowknowledge section is drawn once there is some, and the waiting text is one for every level, "Waiting for your first tick..." (2026-10-27, per explicit user direction)
+- Dungeon map (flag DUNGEON_MAP, off): a map of the dungeon / mission we're in - a corner Minimap or a Diablo-like Overlay, north up - from the hook's layout of each playfield (every room's floor tiles, its doors with their direction) and, while it shows, us and every character loaded around us; each room outlined on its own, doors as lines, players green / mobs red / pets blue, our arrow. The entrance (the playfield's own entrance register), the elevator buttons by the game's names - "Button (up)", "Button (down)", "Button (boss)", the boss floor's "Exit" - and chests, greyed once opened (ContainerContents), with dotted A* paths from the way in to us and from us to the way out. Points are kept per dungeon instance - a mission's id - and saved in dungeonmap/<instance>.json while the mission is in its owner's log as GameMissionLog keeps it, deleted once it leaves (static dungeons and a teammate's mission for the session only). Settings, Other: Style, Border, Players / Pets / NPCs / Chests / Paths switches, Transparency (the minimap's box alone), Size; a rebindable hotkey with no default yet; the Grid and the Fixer Grid not mapped. From a PRK trace session (T52-T60); Live unconfirmed. The hook's side follows in its own commit with its rebuilt binaries (2026-10-27, per explicit user direction)
+- Combat UI, Other tab: the single switches first - Token chance, System message, City raid - and a collapsible section (the dungeon map's) after them (2026-10-27, per explicit user direction)
+
+## 2.2.2
+- Assist runs the game's /assist <name> as the key goes down, ahead of the game's own action on that key: the hook detours the game window's procedure (InputConfig_t::m_hWindow) and calls N3Msg_AssistFight on the saved player on WM_KEYDOWN - the game only queues the key there and runs its hotbar later in the frame (AddUserInput / FrameProcess, read from PRK's code), so a macro's attacks on the same key no longer go out first; nothing selected (GUI.dll's /assist handler: NameToID, then AssistFight); every repeat re-assists; AONewbie tells each client's hook the key and the player (assistkey / assistwho), rebindable, a double-tap stays AONewbie's. Nameplates: no brackets - the target's frame cyan all round, red twice as thick while it fights one of ours (cyan inside it), and the one we fight gets the target frame's moving cyan dots (2026-10-27, per explicit user direction; unconfirmed in game - trace T49 / T50)
+- Party frames: the leader is only ever one the game named - joining a team asks the game who leads (on PRK joining changes no team stat; our own team-list entry with the new team id is the join - trace 19:35:35, Boblea joined Wagyu's team and was drawn as its leader), and "Joining team." with nobody listed no longer guesses that we lead (2026-10-26, per explicit user direction - no guessing)
+- Assist runs the game's own /assist through the hook, as Follow does - nothing typed (typing "/assist Wagyu" lost to the held Assist key: "as1sist", and no assist request ever left the client) (2026-10-26, per explicit user direction)
+- Smart Tab's PvE/PvP are the game's own Tab with only who qualifies swapped: N3Msg_GetCloseTarget read step for step from both clients' machine code - its space query to 100 m from our feet, eye-to-eye LineOfSight at 1.6 with room hint -1, stat 194 and IsVisible, its ordering relative to the current target with the 1000 wrap, the current target from InputConfig_t; PvP's side is our team and raid from the game's own lists (6 raid teams, the TeamEntry_t identity at +0x1C) - the "teammates" list AONewbie sent is gone; the hook's assist action is the game's /assist on the player, nothing selected first, as Follow's (2026-10-26, per explicit user direction - "same as the classic tabbing works")
+- Party frames' collapsed buffs: the hover stays up while the mouse is on the icon (a tooltip closed after 5 s), each buff's time left under its icon (30s, 01:23, 01:02:03), known by its picture - no hover of its own, as a fixed grid as tall as its rows (the wrapping row guessed its width from the screen's scale: two icons or more came out a row too tall) (2026-10-26, per explicit user direction)
+- Code review fixes since app-v2.2.1: PvP Tab's teammates reach the hook after a mid-team start and a relog (the pid was the last run's - PvP picked the 5 teammates), only the logged-in character's team per client, never a guess with two of ours in one team; nameplates off still send the pets and charmed mobs Smart Tab reads (no attackers, no health); charms linked per mob, ended when no client of ours still sees them (closed, zoned, relogged); a zone-in drops that client's in-range timers and the charms it saw land, ended timers pruned as charmed() walks them; the Smart Tab switch writes to the hook off the JavaFX thread; the token chance bar shows every bar on the primary screen while no screen has a character assigned (2026-10-26)
+- Assist: the key types the game's own /assist <name> into that character's window (only while it's in front - never another client's); any player can be assisted from the target bar's menu, not only a teammate; an assist stays until cleared or replaced (it was cleared when the member left the team, and when the registry briefly lost the member's id - the "switch needs a clear first" report); the party frames mark only the assists of the characters whose own view is drawn (2026-10-26, per explicit user direction + review)
+- Combat replay and cast bar: a nano that landed and did nothing (feedback line 0x0D871B9D - after a landed nano of ours with no effect 205 times out of 205, PRK) is a resist - its X, not a bare icon (Improved Health Plunder, trace 18:04:23, 2026-10-26 user report); Smart Tab tells the hook before the HUD redraws for the saved choice (the switch was slow)
+- Combat replay: Fling Shot (any special) counts only our own hits - a special's hit reaches every client in the team and the hit's header names the attacker (now CharacterHit.attackerId); a teammate's Fling Shot landed our press, and a repeated press took the next one - twice, with different damage (2026-10-26, user report, trace 17:31)
+- Assist is a key, not part of Tab: Alt+A (rebindable in Hotkeys) selects the target of the party member the focused game window's character assists; "Assist on Tab" and the hook's "assist <id>" are gone (2026-10-26, per explicit user direction)
+- Party frames: a new target moves the outline on the frames drawn - no rebuild on every Tab, which drew each profession icon and assist mark a frame at zero size (the names and icons flickered, 2026-10-26 user report)
+- Combat replay: a resisted perk shows with its ✕ - "Target resisted." in the same frame as a perk's recharge lock (either first) is that perk's (trace 2026-10-26 15:19:17: Nano Feast resisted, the nano cast just before landed fine); a resist only ever marked a nano that had landed, so a perk's never showed
+- Damage meter: a charmed mob on its charmer's row while the charm runs - ours or a teammate's our clients saw land (the charm's caster), unlinked when the charm ends (links go by name - the mob's kin would count as the charmer's otherwise)
+- Damage meter: our own pets on our row by id (PetAdded), under whatever name they carry and again after a rename; the stat-433 owner lookup is gone - stat 433 is no pet's owner (every pet answered unset), no stat or spawn field holds it (probed in game 2026-10-26)
+- Perk bar and Combat replay after an AONewbie restart mid-session: each perk action's item is kept (combatreplay/perk-actions.json) - the game names a press's perk only in its zone-in list, so until the next zone every press was an unknown perk and the Perk bar ran empty (2026-10-26, user report, traced on Boblea)
+- Party frames after an AONewbie restart while playing: the team is asked on the hook's first answer - the hook, long in the world, never says "ingame" again, so the team was never read and the frames stayed empty (2026-10-26, user report)
+- Party frames: Assist - a teammate's menu offers Assist (Clear assist on the one assisted), one per character of ours, the game's /assist on it at once; its name gets a gold crosshair, every member its profession's icon, both as tall as the name (the name shortens first, the bars don't move); "Assist on Tab" in Smart Tab, on by default; PvP's hook is told our team
+- Party frames, collapsed buffs: the hover is as tall as its icons - a frame's icons are sized from its bars (23.3 px) and, rounded up as laid out, the last one dropped to a second row; the strip's width now counts them as laid out (beside the bars too)
+- Smart Tab: PvP's line - other players, any side, never your team, an NPC or a pet
+- Damage meter: every pet on its owner's row - a non-player coming into range or selected is asked its owner (stat 433 Owner Instance, the hook's statsof); a player owner gets the pet's name for the session, a hand tag wins, a renamed pet is linked under its new name when it comes back
+- Charmed pets: a charmed mob that leaves view and comes back is still a pet - the game re-sends its running nanos with their time left, the charm among them; they were read for players only (trace 2026-10-26: a teammate's Total Mental Domination on Croaker of Solitude)
+- PerkQueue: its javadoc wrapped under Checkstyle's 140 characters
+- Character Sheet: reads itself again on a change to any stat it shows, left side or right (a perk, a raised skill, max health) - it was the level only; current health and nano, which change all fight long, don't
+- Perk bar: named at its start with the first perk sent that isn't recharging - the game runs that one; its lock came at the end of the 1 s bar, so a macro sending two left the bar unnamed all along (Spirit of Blessing never showed). The lock or landing of another renames it.
+- Character Sheet: moving the Agg/Def slider reads the sheet again - our client sets stat 51 (0x6E5F566E, decoded as StatSetRequested) and the server sends nothing back, so the right side kept the old values
+- Smart Tab: Classic is "The game's own Tab."; PvP picks players and their pets - never an NPC
+- Party frames, collapsed buffs: the hover is a picture of the buffs taken as it opens - it updated live and closed after a second; as wide as the member's own icons, a little room each side, wrapped at the bars' width
+- Hook: a nameplate's click box is its bar strip, the target's plate takes no clicks; Smart Tab wraps both next-target calls; the nameplate level in cyan
+- Party frames: a "Buff view" - Expanded (as before) or Collapsed: one icon per member for all its buffs (the one ending first, a count), every icon on its hover
+- Target frame: everyone's level in the cyan (was gold for an NPC) - as the nameplates' level
+- Nameplates and Smart Tab: a charmed mob is a pet while its charm runs - ours or a teammate's our clients saw land - and an NPC again when it ends
+- Smart Tab: each switch's line is a small gray note (settings-note), not the yellow status text
+- Ready icon: a stim's or kit's popup is the only one - its First Aid / Treatment lock no longer also pops "First Aid" in the first-aid kit's icon
+- Alt+V: Players before Players + pets; Smart Tab's Classic line says what the game's Tab picks - NPCs and other factions' pets
+- Smart Tab: three switches - Classic, PvE, PvP - one on at a time, each with a line saying what it does (was a Tab dropdown)
+- Smart Tab (Off / PvE / PvP), a nameplate click no longer lets the game select what's behind it, Alt+V adds Players + pets
+- Token chance bar on every screen: each shows the missions of our characters playing on it, with its own Lock/Move handle - it was on the primary screen only, every character's missions together
+- Buff and debuff icons: an effect with no icon of its own shows the icon of the item that casts it - Bot Confinement's debuff had none; 215 effects in the dataset are like it (perk actions' own effects, Chemical Blindness, ...)
+- damagemeter README: the tail ticks every 100 ms
+- Scrolling text: a number stays fully visible for the Duration (0.75 s by default), then fades in 0.3 s - it faded from the moment it appeared; the chat log is read every 100 ms (was 250) so it shows sooner
+- Nameplates: a javadoc line under Checkstyle's 140 characters
+- Combat UI settings: one order in every section - dropdowns, then switches and buttons, then sliders, each A-Z; a block belonging to the row above stays under it
+- Lock/Move: a placeholder is measured in the font it's drawn in - text previews were cut short in the combat UI's font; the screen text placeholder is the real line, "System messages", at its in-game size
+- Sounds: Combat sounds get their own switch on the title, as Menu sounds - off, every combat sound is silent and its Volume and per-sound switches hide; the per-sound switches stay under it
+- Trade alerts: a text-only post names an item by its whole words in order, and a QL written beside it must be in range - a 1h Kyr'Ozch Hammer wanted no longer matches a 2h Kyr'Ozch Sledgehammer at another QL
+- Nano List: the Generic entry gets its icon - a nano crystal in the profession icons' 32x32 cyan style
+- Frame Rate: up to 120 fps for high-refresh screens, 60 still the default - the slider reads its range from Main
+- Item use buffs, step 3: an item whose use gives a timed buff is a Player timer - its name, icon and longest buff at the QL used; an Items switch beside Nanos and Effects, on by default
+- Content import: the item-data stages in their own method - importAll back under Checkstyle's 150 lines
+- Item use buffs, step 2: imported into item_use_buffs on every content import (v15), read once - how long an item's use buff lasts at the QL used
+- Item use buffs, step 1: item-use-buffs.tsv from both clients' own records - each use buff's stat, amount and duration (PRK-Items drops the duration)
+- Performance: who is around is forgotten on a zone-in, per client - the maps no longer grow all session; one client losing sight of a character leaves what another sees
+- Damage meter rows: the rank first (no dot), then the profession icon, then the name - the rank two digits wide so names line up past row 9
+- Nameplates: Default / Custom colours for players, pets and NPCs; Alt+V shows All / Players / NPCs / Off; a click box always the size set now; "System msg"
+- Review fixes since 2.2.0: the Item bar names only the use that started it; a gear bonus read across an equip isn't kept; tall plates keep their brackets; a stale plate shows after its redraw
+- Coverage gate raised to 95%: 6,682 tests, 95.8% of instructions, 95.4% of lines
+- Tests: capture, protocol, chattyping, screendetect, loot, timer, tradelist, city, prefs, whatsnew, nameplate, customgui, screentext, aosetup - capture feed lifecycle, messages not ours, keys sent to the game, screen poll and focus, loot/timer/trade/prefs failure paths, HUD wiring
+- Tests: damagemeter, inventory, mission, xpbar, charactersheet - app wiring, log lifecycle, failure paths
+- Tests: unitframe, team, nanotimer, combatreplay - wired to a real capture feed, menus, redraws, edge cases
+- Tests: item, util, font - buff import from the game client, share-code ids, dataset gaps, font uploads
+- Tests: service, database - startup import isolation and stage labels, bundled-file replays, guide blocks, late/failed icon reads, dataset file checks
+- Tests: controller, interaction.support, interaction.itemdetail - HUD Lock/Move drag/snap/resize, overlay and panels from real FXML, WhatBuffs table rows/clicks/sorting, IP panel, share codes, quality/colour/hint controls, detail header/QL/badges
+- Tests: interaction (M-Z, part 2) - Weapon DPM, Perk Planner, Timers, Nano Details, Mission run, wheel scenarios
+- Tests: interaction (M-Z, part 1) - Mission Log, Settings, Nano List, Setups, Missions, Symbiant Compare scenarios
+- Tests: interaction (A-L) - bank/inventory bag clicks and shift-click details, keybind capture and double-tap, damage meter rows/tooltips/post log, implant designer dropdown rows and shortcuts, item search ordering and keys, guide links and column layout, buffs/clothing/IP/sheet with services, loot lines
+- Nameplates: no profession icon, the level plain text left of the centred bar, brackets around the bar only; Yours off by default; /list removed
+- Performance: the timers list leaves its place and scale alone when they haven't changed
+- Performance: the target bar redraws once per burst of changes, not once per change
+- Performance: a character's inventory serialized once per burst, when its write runs
+- Performance: the party frames move their bars in place on a health or nano tick, not rebuilt
+- Performance: our characters' gear bonus kept until their inventory changes
+- Performance: the roster written once per burst, not re-serialized per player; the nameplate sync idle while off or with no client
+- Automatic /list (behind PLAYER_LIST, off): professions for every player in range, nothing typed, its reply kept out of chat
+
 ## 2.2.1
 - Target frame: the name centred on the frame - a player's, a mob's, our own - the level on the left; a long name moves right of it
 - Perk bar: never names a perk that didn't run - named at its start only when one perk fits, by the game's lock as it finishes
@@ -37,9 +178,13 @@
 
 ## 2.2.0
 - Nameplates: an on/off switch on the section - off, or the Combat UI off, gives the game its own bars back
+- Revert the Nameplates switch commit: Alt+V cycling and Show's Off come back
 - Live dataset released: the live (18.8) records beside PRK's, each client's server detected (issue #6)
 - Perk bar: just the perk's name, no +N queue count
+- Nameplates: an on/off switch on the section like the other frames, Show without Off, no Alt+V
 - Data build: the duplicate report reads without flushing every row the earlier cleanups loaded
+- Revert "Draw on the CPU: no waiting on a GPU the game keeps busy (ao-vk)"
+- Draw on the CPU: no waiting on a GPU the game keeps busy (ao-vk)
 - Live dataset: live's basic implant names (Basic Left Arm Implant) for slot art and empty imports (issue #6)
 - Live dataset, stage 4e (review fixes): sharper delta check, Nano List fallback server tested (issue #6)
 - Live dataset, stage 4e: live-vs-PRK scenarios on the real db (issue #6)
@@ -218,12 +363,14 @@
 - Nano modifiers: a repeated stat is base "up to" its boosted versions, never a sum
 
 ## 2.0.0
+- Review fixes: Setups AI kept while typing a level; open Timers filled, not shut; older PvP sizes kept
 - One reader for every data file; boss timers from the kill; default HUD layout; skin flagged
 - Inferno dyna bosses linked to their pocket bosses; the data pipeline rule
 - Boss kill timers: a killed boss offers its timer; respawns per server
 - Timers: no double fire on the due tick; a boss message starts a stopped timer
 - WhatBuffs: Spirits scale with quality; Setups: AI level capped by level
 - Buff strip: the Meta-Physicist's composites are their own group
+- Release review fixes: perk plan kept on import, XP bars after a relog, SpotBugs/Checkstyle
 - City raid timer, AONewbie Link over Vicinity, one Menu sounds switch
 - Settings: scrolling text kinds, per-sound switches, Combat/Track bars, General style
 - Mission Log: alien missions list the Alien Invasion quest guides
@@ -235,6 +382,7 @@
 - Tests: look up suggestion popups on the JavaFX thread; no endless poll
 - Buff icons as their own strip; one 1 s clock for icons; frame right clicks
 - Deleted characters from the game's list; client-read max; per-client close
+- Review 1.6.1 -> master: findings 1-3 and 5-8 fixed
 - Game commands through the hook: zone scripts, Follow; zone-in decoded
 - Party frames: a right click always opens the menu
 - Wheel over an open dropdown, suggestion list or menu scrolls it
@@ -280,6 +428,7 @@
 - Lock/Move snapping and plain placeholders; Frames renames; AONewbieGUI tag; About credits
 - Combat HUD: cast bars block, Frames settings sections, party level/profession, hide on logout
 - Combat HUD: hook-side team select, Combat settings tabs, timer start stamps, traces
+- Bump to 1.7.0
 - AONewbieGUI released; hook, focus and review fixes for 1.7.0
 - AONewbieGUI: game timers, con colours, focus-free overlay, frame fixes
 - Remove /list entirely
@@ -306,22 +455,64 @@
 - Nano timers: time left as 45s / mm:ss / hh:mm:ss
 - AONewbieGUI: fixes from the code review
 - AONewbieGUI: own client skin module and a native game window bridge
+- Custom GUI javadoc: drop the sprite packer tool that was never written
 - Shadow nano duplicates: clean up after every item-effect import
 - Nano timers: one NCU list per character ("Boblea NCU", "Nopet NCU")
 - Nano timers from capture, game-hook gating, and the dataset first over bundled files
 - Scrolling text: one merge rule for everything; Team view keeps members since Reset
-- 
+
+## 1.7.0
+- AONewbieGUI released; hook, focus and review fixes for 1.7.0
+- AONewbieGUI: game timers, con colours, focus-free overlay, frame fixes
+- Remove /list entirely
+- Damage meter: Shadowknowledge leads the XP tab from level 200
+- Implant compare: fix the class doc's wording
+- Implant compare: the picked symbiant stays the reference when stepping
+- Inventory: replay a real equip-from-backpack through decoder and model
+- Setups: a compact share code that fits in one AO chat message
+- Fonts: remove a font you added
+- Panels: a slight cyan edge on every panel
+- AONewbieGUI: the F10 round-bars option switches game bars vs our frames
+- AONewbieGUI: right-click menus on the frames run the game's own actions
+- AONewbieGUI target frame (JavaFX)
+- AONewbieGUI party frames: the team bars restyled like the player frame
+- Player frame: touch nothing when nothing changed
+- AONewbieGUI: the player frame in JavaFX, the native frame parked
+- Revert closing the game's own Team window
+- AONewbieGUI unit frame at the reference's sizes, no resizing
+- AONewbieGUI: close the game's Team window at most once a second
+- AONewbieGUI unit frame replaces the game's own Team window
+- AONewbieGUI unit frame: names and numbers as text, sizes from F10
+- AONewbieGUI team frame: team rows, cast bars, F10 Frames page
+- AONewbieGUI: player frame, hidden game bars, frame commands in the hook
+- Nano timers: time left as 45s / mm:ss / hh:mm:ss
+- AONewbieGUI: fixes from the code review
+- AONewbieGUI: own client skin module and a native game window bridge
+- Custom GUI javadoc: drop the sprite packer tool that was never written
+- Shadow nano duplicates: clean up after every item-effect import
+- Nano timers: one NCU list per character ("Boblea NCU", "Nopet NCU")
+- Nano timers from capture, game-hook gating, and the dataset first over bundled files
+- Scrolling text: one merge rule for everything; Team view keeps members since Reset
+
 ## 1.6.2
 - Solid clumps: each low/high id pair one QL-range family, clumps named by type
 - Bank / inventory: a clump's type in cyan on its icon
 - What's New: releases oldest first
 
 ## 1.6.1
+- Closing a panel: hand focus back at once - waiting for the fade didn't help
+- Team bars: max health never learned from a drop, room for 6, leader marked, full-team placeholder
 - Mission Log: a quest's details list up to 3 guides naming its people and things
+- /loot: a drop too big for one message posts as numbered links, chained
 - Damage meter learns professions from selecting a player; /list stays as backup
+- Closing a panel: no focus switch when the game has it, else after the fade
+- Team bars: max health/nano from buffs and gear, learned from the drop, not while a lookup is pending
+- Add timer button matches Import/Export; bold WTS/WTB before the trade macro label
 - Mission Log opens minimized at the right edge on a finished quest or mission
 - Trade watch: a name inside another item's link is not a mention
-- Chat scripts: shared ChatScript (4096-byte chaining, delays, writing); /aodmg posts everyone and chain
+- Chat scripts: shared ChatScript (4096-byte chaining, delays, writing); /aodmg posts everyone and chains
+- Timers: import/export, full edit with Repeats, Info field, waypoint button; IP's names bold; perk highlight without side bar
+- AONEWBIE share codes: one import/export format and box for Setups and Timers
 - Tarasque timer counts to when he can be attacked
 - Perk Planner: points used counted on open, trained lines first and highlighted
 - IP's panel: buttons visible again, Revert to the opening state, clearer rows
@@ -330,19 +521,34 @@
 - Perk data: Defensive Stance added, 34 perks.json levels corrected
 - Perk ids: the full table, generated from the game client's own perk records
 - Import from Character brings the trained perks into the Perk Planner
+- Team bars: TeamVitalsService asks OurCharacters instead of its own list
+- Team bars: max health and nano no longer taken from stats 1 and 221 (flagged)
+- Docs: threading, capture and database rules from the dispatcher plan
+- Capture dispatcher Phase 5: every consumer on typed, staged subscriptions
+- Capture dispatcher Phase 4: capture gets its own package
+- Capture dispatcher Phases 2-3: GameEntities registry and explicit stages
+- Capture dispatcher Phase 2, step 1: one lookup for our characters
+- Capture dispatcher Phase 1: typed subscriptions
+- Phase 0: panels no longer read the database on the JavaFX thread
+- Phase 0: running-nano lookups and search-as-you-type off the waiting threads
+- Team bars: max health and max nano follow buffs (flagged)
+- Team bars: click to select, rebuild after restart, per-screen views, NCU and max health (flagged)
 - Refined (QL 201+) implants in the Implant Designer
 - Mission runs as clearable progress, failed/deleted missions, split-family reward QL
-- 
+
 ## 1.6.0
-- Quest completion between list updates, full character removal
-- Mission Log shows completed runs and rewards
-- Mission Log, quest chains, setup prompt for new toons
-- Combat UI options, more ready icons
+- Quest completion between list updates, full character removal, drop protocol trace
+- Release review fixes; Mission Log shows completed runs and rewards
+- Mission Log fixes, setup prompt for new toons, park the L-key step
+- Mission Log on L, with quest chains, completion and the game's L freed
+- Combat UI options, more ready icons, drop Live Game Data section
 - Combat UI font picker with bundled and uploaded fonts
 - Added UI scaling and fixes
 - Inventory: follow the game's Auto arrange order; note on unseen bags
+- Search boxes drop their pick when emptied
 - Pets: tag recolored pets, split pet damage/heals in details; fix HUD-blocked scrolling
 - Team: damage meter Team filter, capture-fed team, team health/nano bars (flagged)
+- Loot window (behind the loot flag) + feature flags move to config.FeatureFlags
 
 ## Launcher 1.8.4
 - Launcher logs its startup, progress and silently-handled failures
@@ -365,9 +571,15 @@
 - Release the mission token chance bar; keep Missions behind its flag
 - Show the mission token chance as a movable HUD bar
 - Track each character's mission token chance from the chat log
+- Add feature flags and hide Missions behind one for release
+- Add mission watch lists with a toast on a matching roll
+- Add a Missions panel to the anchor bar
+- Keep each character's mission roll and accepted missions in memory
+- Decode mission terminal rolls and the character's mission list
 - Keep live inventory updates off the capture and JavaFX threads
 - Link a bag received in a trade to its contents the first time it's opened
 - Keep the combat log feed running when an online character has no name yet
+- Fix the outgoing capture hook: Send's length is its second argument
 - Add pattern finder and live inventory tracking for trades, loot, use and credits
 - Name the owner of shared ready icons when toons share a screen
 
@@ -400,7 +612,7 @@
 - Combat UI checkbox hides everything now
 - Fix guide interaction having two prev next sets of buttons
 - Added pet level info for engineer, crat & mp
-  
+
 ## 1.3.0
 - Shift+Shift search history: Prev/Next through the last 25 searches
 - Perk action level data: Evasive Stance and 35 more actions now carry every level
@@ -431,7 +643,7 @@
 - Replace per-bar AnimationTimers with one shared tick in DurationTimerView
 - Exclude Calm/Mezz pacify nanos from duration-timer tracking
 - Split Bureaucrat's Charm Other nanoline into Long/Short/Team Empowered groups
-- Fix WhatBuffs profession filtering, require a profession, and redesign it's implants tab
+- Fix WhatBuffs profession filtering, require a profession, and redesign the Implants tab
 - Verify scheduleAtFixedRate never overlaps a task with itself on the shared pool
 - Consolidate the low-frequency character-detection pollers onto one shared scheduler
 - Decouple combat text/sounds/trade from the damage meter; one shared log window
@@ -442,14 +654,303 @@
 - Fix and extend nano-crystal item linking; add the real crafting chain
 - Let charm-line nanos exceed the duration-bar 5-minute cap
 - Fix mislabeled/uncategorized Nano List groups in the aogalaxy catalog
-  
+
 ## 1.1.0
 - Combat/Sounds/Anchor settings overhaul, panel default-size sync
-- Load Inventory/Setups/Settings data in the background
-
-## 1.0.0
-- Let's gooooo!
+- Load Inventory/Setups/Settings data in the background, not on open
 
 ## Launcher 1.8.2
+- Fix "couldn't reach GitHub" when a proxy/VPN is in play
+
+## Launcher 1.8.1
 - Fix wrong uninstall property: MSIFASTINSTALL never disabled rollback
 - Remove the now-unused launcherReleaseManifest task and doc references
+
+## Launcher 1.8.0
+- Remove the Launcher self-update mechanism entirely
+
+## Launcher 1.7.1
+- Fix a silent UI freeze from an uncaught NPE, add exception logging
+
+## Launcher 1.7.0
+- Fix Launcher self-update hanging via a detached helper process
+
+## Launcher 1.6.0
+- Fix Launcher self-update deleting AONewbie, make it fully automatic
+
+## Launcher 1.5.0
+- Simplify View Readme/Changelog to fixed GitHub URLs
+
+## Launcher 1.4.0
+- Fix Launcher uninstall failure, stuck updates, and drop the progress bar
+
+## 1.0.0
+- Add a Settings anchor-bar button, renumber the bar to a clean 1-10
+- Clean up script-posted trade messages in the Trade Log
+- Drop the trailing | on the aodmg box - left border only
+- Make "All" a permanent total, fix the box's border color, speed up delays
+- Revert "Remove the damage meter's auto-reset-on-new-fight behavior"
+- Remove the damage meter's auto-reset-on-new-fight behavior
+- Drop the price arrow and point the trade macro footer at the plain repo
+- Fix chat script lines silently dropping in-game with no gap between them
+- Give the aodmg chat report a real rectangular ASCII box and per-tab title colors
+- Fix aodmg Team-chat posts cutting off partway through
+- Fix Global Trade/custom channel macros never posting via a hotbar macro
+- Fix trade list categorization, message length, and macro/log note scoping
+- Clarify that the Sell/Buy macro buttons are a one-time setup, not a refresh
+- Add categorized WTS/WTB trade-list messages with a per-tab item cap
+- Fix green bullet + bank-match highlighting; revert Nano List picker's x/none
+- Fix green bullet, search highlight scope, and a false-positive bank match
+- Default Damage Meter to all-time totals, not per-fight
+- Stop reload from yanking the sidebar selection away from a viewed alt
+- Scope inventory fetches to one character, add logged-in indicator, search-match highlight, and character removal
+- Cache inventory catalog resolution, debounce capture-update reloads
+- Fix Inventory Browser search not highlighting a bag containing the match
+- Fix requirement tags/lines ignoring not-equal op, flipping negated checks
+- Fix Nano List showing nanos under professions they can't actually use in 18.4
+- Remove unreliable boss-death-detection respawn timers, wire Tarasque to Timer feature
+- Clean up imports, fix Checkstyle/SpotBugs findings, refactor long methods
+- Small UI changes
+- Capture real min..max on-use hit ranges, fix collapsed-to-min display
+- Decouple Guide List's folder tree and guide table scrolling
+- Combine Sell/Buy macros into one per tab, move buttons into Trade panel
+- Auto-discover real trade channel ids, generalize window setup
+- Small text changes
+- Make the trade watcher always-on, remove the Log tab checkbox
+- Fix timer editing: flicker, sound-on-edit, resize, invisible labels, no input validation
+- Dmg meter width/height
+- Profession icons + damage meter compaction, real profession detection
+- Fix shift+click showing the wrong quality on split implant/cluster items
+- Fix Launcher desktop icon and Exit menu glyph; update About panel
+- Add weapon special attacks to cooldown ready-icon tracking
+- Added search debounce for inventory system
+- Fix stale item name/icon resolution; restructure Inventory Browser UX; cache for speed
+- Redesign Inventory Browser as equip/inventory grids; fix real bag detection
+- Show per-character and total credits in Inventory; consolidate util/ into Utils
+- Add faction change to scrolling combat text; strip pet color-code names everywhere
+- Bank Grid: real bag names, 4-bag centering, in-bag search highlight, faster refresh
+- Implant designer - duplicate itemDetails fix
+- Add real IQ-Ring-shaped interpolation chains for belts, NCU, and more
+- Fix implant equip requirements: off-by-one and cluster-ability override
+- Fix bank bag-content correlation via item's own child container id
+- Add Bank Grid Viewer: 17x6 grid matching the real bank, up to 5 opened bag boxes, real client-prefs positions/names, loot-window filtering
+- Consolidate character import into Setups; persist Ability/Skill points; nicer Remaining IP
+- Fix Remaining IP: skill values carry no trickle, and stat map 1 has real data too
+- Import captured skills/IP into the Character panel; tighten popup position; drop the Refresh button
+- Fix perk recharge parsing gap: minutes-based descriptions were silently ignored
+- Fix FULLSYNC Level/Breed/Profession/AI decode and implant cluster QL matching
+- Remove Equipped Setup, port its refresh/live-update into Setups' character import
+- Fix imports leaving a previous character's gear lingering; make stat-decode failures visible
+- Add a real-dataset regression guard for implant cluster reverse-derivation
+- Fix Setups import: wrong equip slots, wrong Breed/Profession, incomplete implant clusters
+- Nano List: fill in confirmed mission-reward locations, note the location data's real patch
+- Import worn gear from a captured character into Setups
+- Implant Designer: correct ability requirement when clusters change it
+- Nano List: clean up the derived Generic bucket, force real multi-prof nanos into it
+- WhatBuffs accuracy fixes: perks, nano team-buffs, chain names/icons, GM junk
+- Fix SuggestField popup rendering with modena defaults, not the app theme
+- Character panel overhaul, tokenized search fields, Tarasque boss timer
+- Weapon damage calculator fixes
+- Weapon damage calculator % trickle
+- Merge The Night Heart's split BOSS/POCKET_BOSS entries into one raid
+- Fix "The Night Heart" symbiant drops missing from Dropped-by section
+- Weapons/Clothing: add Clear all and a QL slider under each slot
+- Weapons/Clothing: single-slot editor layout, fix restore-on-open bug
+- Setups hub follow-ups: Total stats for Weapons/Clothing, unified profile I/O
+- Restructure Setup into a Setups hub with shared character context
+- Fixed modifier formatting
+- Add Character tab to Setup: real AO IP/ability/skill point allocator
+- Add WhatBuffs tab to Setup: find items/nanos/symbiants/clusters that buff a skill
+- Broaden test coverage: new unit tests, a nano-formula integration test
+- Apply EI_EXPOSE_REP/REP2 fixes with precise SpotBugs exclusions
+- Fixed nano attack skills, hide defence skills
+- Added new nano shutdown and small tweaks
+- Added new icon
+- Auto-detect screen-to-character assignment, replacing manual picker
+- Fix perk-action cooldown detection and scope duration bars per screen
+- Implant designer png cleanup
+- Add Setup Designer: Weapons + Clothing equip planner
+- Drop the "ready!" suffix from the cooldown-ready icon's label
+- Add sound effects for opening interactions, HUD unlock, death, and app start
+- Trim/fade the timer sound and rename static/ resource folder to images/
+- Fix ready-icon flash drifting from its HUD-placement placeholder for long cooldown names
+- Add notification sounds for timer expiry and cooldown-ready icons
+- Fix code-review findings: N+1 queries, socket/listener leaks, shutdown races, stray id fallbacks, duplicated sort wiring
+- Triage and fix the full SpotBugs (+ FindSecBugs) findings backlog
+- Inventory: real delta engine, search, and real backpack naming
+- Fix nano Duration unit bug, add a real nano cooldown watchlist
+- Restyle duration bars (transparent, square, right-to-left drain) and repurpose Ready Icon Manager into a nano duration tester
+- Auto-track every perk action's cooldown/duration across all professions, add Nano Shutdown detection, fix real perk-attack log parsing
+- Tweak AOIA capture description wording in Settings
+- Keep each skill-bonus group in one grid column instead of spreading it across all 3
+- Multi-instance damage meter: exact character ID matching, per-screen HUD, Vicinity posting
+- Move Post Log back to a real script; fully remove isCaptureEnabled()
+- Fix Spirit of Blessing stale recharge, add ready-icon labels, always-on capture
+- Fix heal duplication, special-attack detection, and clear-pet-tag bug
+- Small tweaks
+- Fix Scrolling Combat Text rendering plain black instead of its colors
+- Fix truncated right-aligned buttons; remove ButtonRow overengineering
+- Show real heal-source names, rename NP to Nano, color special attacks
+- Hide Rarity/QL and move Level chooser to first position for perks
+- Let any real perk action (not just curated ones) be added to the watchlist
+- Fix HUD anchor mismatch, remove wrong nano-cooldown tracking, restructure watchlist
+- Fix perk action placement/consistency bugs and raise instruction coverage
+- Fix zero-value bonus tags and self-vs-target perk action mislabeling
+- Fix Lost Eden Research perk actions + broaden Type-1/2 action recognition
+- Combat UI v5: UI consistency pass, perk fixes, multi-instance hook capture
+- Not complete combat scroll
+- Combat UI v4: duration/spawn timers, ready icons, Settings Combat tab
+- Nanolines improvements step2
+- Nanolines improvements step1
+- Add scrolling combat text (MSBT-style) to the damage meter
+- Added data vault
+- Fold icons, guide images and symbiant maps into the db as BLOBs
+- Retire the multi-database feature; one pre-built database only
+- Add buildDataDb task; portableZip ships a pre-built database
+- Retire dungeons-and-raids stubs; unify the boss panel; de-dupe drop sources
+- Crawl the rest of the ao-universe guide graph: +104 guides (247 total)
+- Finish Legacy of the Xan: gameplay + remaining tradeskill guides
+- Crawl the full ao-universe guide graph: +74 guides (134 total)
+- Add the 7 guides the previous round linked out to
+- Add the 6 guides the LoX tradeskill guides linked out to
+- Re-scrape LoX quest + encounter guides; +6 guides from recursion
+- Add nascence-guide; drop over-eager Arid Rift links
+- Add Legacy of the Xan quest guides (Arid Rift chain)
+- Import strain-1029 encounter buffs; fix 12-man guide "The Awakening" link
+- Dataset cleanup batch + inventory identity perf fix
+- Damage meter improvements
+- Resist Nano lines on the cast nano, not just the item
+- Item cast-on-use / Resist Nano: bundle + replay so it survives a reimport
+- Perk Planner: per-level perk-action values, layout fixes, smarter /p
+- Offscreen improvements
+- Guides improvements v2
+- Guides improvements
+- Import/startup improvements
+- Scrape conditional-modifier text for ordinary items too
+- Requirements: resolve/suppress every remaining unhandled op & kind
+- RequirementFormatter: resolve worn/wielded-item checks (op 31/32/33/34)
+- Scrape perk-action Modifier blocks from aogalaxy; perk details link
+- Perk Planner polish 2: layout, reset confirm, in-place perk-action levels
+- Perk Planner polish: shared SkillLabeler, perk-action UX, requirement ops
+- Perk Planner: 12-fix batch + perk actions from Nadybot
+- QualityTierGrouping: more swap-prefixes, Advanced/Quality prepend, Shade spirit tiers
+- Merge "Worn X" / "High-Quality X" armour tiers into one interpolated family
+- Perk: rely on the named unique index for aoid, not @Column(unique=true)
+- Perk Planner: point budget + docs
+- Perk Planner panel + shared SkillBonusGrid
+- Item search: /p perk prefix with level + class meta
+- Perk data layer: bundled catalog, perk table, per-level family names
+- Import: drop items gated solely on NPCFamily (encounter/NPC junk)
+- Renamed interpolation chains: open at base QL, + Aggression Enhancer chain
+- Implant Designer: always show Break & Entry, exclude Jobe/refined slots
+- Added initial implementation of equipment setup
+- Removed OCR
+- Removed CharacterStats
+- Windows: 50% off-screen slack, Settings width + scrollable tabs + layout reset
+- Implant designer: body cells use the "A Basic <Slot> Implant" icon
+- Symbiant compare: line-less base compares against every wearable line; resizable
+- Outlier families: keep the raw import names findable + title follows the QL
+- Implant designer: enforce Jobe/clean rules from the crafting guide
+- Anchor bar: reorder buttons and refresh four glyphs
+- Implant designer: filled cluster cell falls back to the cluster's icon
+- Cleanup: remove the ~44k pre-made combinatorial implant families
+- Implant designer: synthesize the implant on shift-click instead of a DB row
+- Interpolation chain for the "Belt Component Platform" NCU-belt tiers
+- Trade watcher live on/off toggle; default keybinds Ctrl -> Alt
+- Some fizez
+- Cache name resolver bug
+- Capture recorder + replay tool - groundwork for mid-zone-live stats
+- Character screen: live derived/hidden stats via the capture hook
+- Inventory capture: integration test + shared blob builders + replay test
+- Rename Settings' "Logging" tab -> "AO Integration"
+- Rename the inventory-capture helper iainject.exe -> aonewbie-bridge.exe
+- Inventory/bank/backpack tracking via a forked PRK Item Assistant hook
+- Fixes: item-details QL passthrough, symbiant list on profession switch, guide/requirement resolution
+- Implant designer: symbiant compare panel + dropdown / sort fixes
+- Implant designer: per-slot I/S loadouts, symbiant chooser rework, UI polish
+- Implant designer improvements
+- Implant Designer: fix missing Nano Delta clusters; tag + QL-tag UI tweaks
+- Implant Designer: full redesign, equip requirements, startup + DB work
+- First implementation of impl designer
+- Drop sources + pocket bosses: aoguide data, guide links, search polish
+- Fizes for drop sources
+- Moved the aban quest in the right folder
+- Added PB and waypoint support
+- Code review and readeME compacting
+- Big refactor
+- Item search improvements
+- Macro wordings
+- Added nanopoint location drop
+- Guide fizes
+- Added first iteration of macros
+- Added ndGui setup
+- Code analysis
+- Guide scrapper improvements
+- Checkstyle
+- Guide scraper updates
+- Database curation
+- Symbiant duplicates removal, belt, iq ring, patter matching fizes
+- Some improvements to out of bounds interactions off-screen
+- Added more tool scripts, scraper and resizer
+- Guide and trade improvements
+- Fixes to settings and trading
+- Big improvements to settings and trading
+- Add trade parser, single instance guard
+- Polish trade feature, ensure single instance
+- Upgrades to trade feature
+- Penumbra civilization quest added
+- Add UI improvements, display and keybind settings
+- Test coverage and guide progress
+- Fix tests broken by the guide-content refactor; add Jacoco coverage reporting
+- Add waypoints button more guides
+- Add waypoints
+- Add traveling-through-the-shadowlands guide
+- Resized guide images to 400 width
+- Guide interaction small improvements
+- Refactor detail-panel interactions onto a shared services bundle; move guides to one-folder-per-guide
+- Add guide pagination, inline item/nano/guide references, and a real quest guide
+- Add Guide system: browser, detail panel, hand-authoring import
+- Prepare for guide interaction
+- Add Settings general tab: opacity slider, text size, rebindable hotkey
+- Add timer edit (correct remaining time, keep repeat cycle) and cycle-length hover tooltip
+- Replace trade-list "post to chat" toast with macro/channel creation
+- Fix requirement rendering collapsing to one line when an OR/NOT subtree appears
+- Fix anchor-bar tooltip flash, redesign Nano List per real auno.org structure
+- Add nano cast-check mechanics, per-profession nano browser, finish School/DamageType survey
+- Wire bag/bank layout setup into a settings button, expand its tests
+- Add Specialization requirement decoding and item obtained-from sourcing
+- Remove dead autoHideMobs flag from PetOwnershipResolver
+- Add bag/bank layout automation groundwork and BagScanInteraction refactor
+- Added nanospeed calculator
+- Add nano icon recovery, cast-nano/resist-nano enrichment from Tinkertools, and a full DB schema map
+- Fix armor paired-slot Location, unify detail-tab styling, add auno.org-sourced weapon/nano fields
+- Fix item-detail header layout bug, add stat sort ordering, unify button styling
+- Fix damage meter cross-thread state race, add per-package READMEs and a verify-build skill
+- Port PRK-DamageMeter, add Trade Lists via AO chat scripting, and polish item-detail/toast UI
+- Filter NPC/mob attack-stub weapons from item search, recover 6 icons from PRK.GG
+- Unify item detail rendering into one real-data-verified renderer
+- Add Speed/Skill-To-Use item fields and multi-slot Location naming
+- Fix code-review findings on nano support: mislabeled fields, dead code, duplication
+- Add nano program support with search, details, and crystal item linkage
+- Added more timer presets
+- Fix code-review findings: dead repo method, QL header regression, requirement blending, dangling headers
+- Fix QL slider interpolation, add per-class item detail layouts and guides
+- Add multi-word item search and requirements/modifiers to details panel
+- Replace icon repair pipeline with CDN-sourced icons
+- Add boss/event timers, icon-only anchor bar, and small UI/CSS fixes
+- Split unit/integration tests, repair icons/ in bulk, drop runtime icon processing
+- Rework item database into a family/QL-breakpoint schema, add spotlight item search
+- Improved database import, added logging  and exception handling
+- Moved settings into the tray window and added import/delete and about
+- Added base database setup and data import, improved interactions
+- Simplify overlay to one screen, fix tray exit, add Exit menu item, make result panels movable/resizable
+- Use the app logo as the tray icon, drop the separate logo asset
+- Added packaging as standalone app
+- Finish Spring+JavaFX integration, redesign overlay per-monitor, add theme and tests
+- initial commit
+
+## Launcher 1.3.0
+- Harden the Launcher: self-update reliability, download progress, GitHub-hosted docs
+- Fix Launcher self-update reporting a stale baked-in version
+- Fix Launcher's stale-jar update bug, add Launcher self-update
+
