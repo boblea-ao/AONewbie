@@ -1,5 +1,8 @@
 # Changelog
 
+## 2.4.3
+- AORaid and the dungeon map on Live only: a feature flag can name its servers (FeatureFlags.AORAID, DUNGEON_MAP - per client, an unknown client off; none listed is off completely); on PRK no link, no windows, no hotkey or Quick Access slice, no map, and the AORaid add-on is removed from the client's folder, a replaced mod's winmm.dll put back
+
 ## 2.4.1
 - AORaid add-on 1.3.0 bundled, which the site now requires: the player's level and profession signed into a join, the add-on's version on every request, trash loot checks, a corpse rolled once, a stake left out of a roll can be disputed, /aoraid announce takes no channel
 - The add-on installs while a client from that folder is running (the loaded winmm.dll moved aside); it takes effect the next time the game starts
